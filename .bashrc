@@ -17,8 +17,7 @@ alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 
 # Custom Aliases
-alias clear='clear && echo; neofetch --ascii_distro arch_small'
-# alias ssh="kitty +kitten ssh"
+alias clear='clear && echo; neofetch --config /home/daraghhollman/.config/neofetch/bashrc_conf.conf --ascii_distro arch_small'
 
 alias hx="helix"
 
@@ -50,8 +49,7 @@ eval "$(starship init bash)"
 eval "$(thefuck --alias)"
 
 
-echo; neofetch --ascii_distro arch_small
-
+echo; neofetch --config /home/daraghhollman/.config/neofetch/bashrc_conf.conf --ascii_distro arch_small
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
