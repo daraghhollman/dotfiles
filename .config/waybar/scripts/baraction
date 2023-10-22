@@ -20,6 +20,10 @@ echo "$MODSTR"
 #show a message
 notify-send -h string:x-canonical-private-synchronous:sys-notify -u low "switching to $MODESTR"
 
+# Change theme 
+xfconf-query -c xsettings -p /Net/ThemeName -s "Adwaita$SWITCHTO"
+gsettings set org.gnome.desktop.interface gtk-theme "Adwaita$SWITCHTO"
+
 #change the background image
 swww img ~/Photos/Wallpapers/'background'$SWITCHTO.jpg --transition-fps 60 --transition-type wipe --transition-duration 2
 
