@@ -29,3 +29,7 @@ swww img ~/Photos/Wallpapers/'background'$SWITCHTO.jpg --transition-fps 60 --tra
 
 #update the sddm image
 cp -f ~/Photos/Wallpapers/'background'$SWITCHTO.jpg /usr/share/sddm/themes/sdt/wallpaper.jpg
+
+# restart waybar
+pkill waybar
+waybar &

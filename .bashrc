@@ -21,6 +21,8 @@ alias clear='clear && echo; neofetch --config /home/daraghhollman/.config/neofet
 
 alias hx="helix"
 
+alias namd="/home/daraghhollman/Installations/NAMD_2.14_Linux-x86_64-multicore/namd2"
+
 # NAVIGATION
 alias ranger=". ranger"
 alias ls="exa"
