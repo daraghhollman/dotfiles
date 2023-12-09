@@ -1,84 +1,70 @@
 format = """
-[░▒▓](#95e5cb)\
-[  ](bg:#95e5cb fg:#0e1419)\
-$env_var\
-[](bg:#c7fffc fg:#95e5cb)\
+$directory\
 $username\
 $hostname\
-[](fg:#c7fffc bg:#0e1419)\
-$line_break\
-[░▒▓](#ff6565)\
+$env_var\
 $git_branch\
 $git_status\
-[ ](fg:#ff6565 bg:#ffa3aa)\
-[ ](fg:#ffa3aa bg:#394260)\
-$directory\
-[](fg:#394260 bg:#212736)\
-[](fg:#212736 bg:#1d2230)\
-$time\
-[ ](fg:#1d2230)\
-\n$character"""
+$fill\
+$battery  \
+$time  \
+\n> 
+"""
+
+add_newline = true
+
+[fill]
+symbol = ' '
 
 [directory]
-style = "fg:#CBBAED bg:#394260"
+style = "fg:bright-cyan bg:#0e1419"
 format = "[ $path ]($style)"
 truncation_length = 5
 truncation_symbol = "…/"
 
-[directory.substitutions]
-"Documents" = "Documents"
-"Downloads" = "Downloads"
-"Music" = "Music"
-"Pictures" = "Pictures"
-
 [username]
-style_user = 'fg:bold #2B3D41 bg:#c7fffc'
-style_root = 'fg:bold red bg:#c7fffc'
-format = '[ $user]($style)'
+style_user = 'fg:#e5e1cf bg:#0e1419'
+style_root = 'fg:red bg:#0e1419'
+format = '[$user]($style)'
 disabled = false
 show_always = true
 
 [hostname]
 ssh_only = false
-format = '[@$hostname](fg:bold #F07078 bg:#c7fffc)'
+format = '[@$hostname](fg:bold purple bg:#0e1419)'
 disabled = false
 
 [env_var]
 variable = 'CONDA_DEFAULT_ENV'
-format = "[ {$env_value} ](fg:#090c0c bg:#95e5cb)"
+format = "[ $env_value ](fg:e5e1cf bg:#0e1419)"
 disabled = false
-default = '~'
+default = ''
 
 [git_branch]
 symbol = ""
-format = '[[ $symbol $branch ](fg:#323232 bg:#ff6565)]($style)'
+format = '[[ $symbol $branch ](fg:bright-blue bg:#0e1419)]($style)'
 
 [git_status]
-format = '[[($all_status$ahead_behind )](fg:#323232 bg:#ff6565)]($style)'
+format = '[[($all_status$ahead_behind )](fg:#323232 bg:#0e1419)]($style)'
 
-[nodejs]
-symbol = ""
-style = "bg:#212736"
-format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
+[battery]
+full_symbol = '󰁹 '
+charging_symbol = '󰂄 '
+discharging_symbol = '󱟤 '
+format = '[$symbol$percentage]($style)'
 
-[rust]
-symbol = ""
-style = "bg:#212736"
-format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
+[[battery.display]] # 'bold red' style and discharging_symbol when capacity is between 0% and 30%
+threshold = 30
+style = 'bold red'
 
-[golang]
-symbol = "ﳑ"
-style = "bg:#212736"
-format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
+[[battery.display]] # 'bold red' style and discharging_symbol when capacity is between 30% and 100%
+threshold = 100
+style = 'bold #FFB454'
 
-[php]
-symbol = ""
-style = "bg:#212736"
-format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
 
 [time]
 disabled = false
 time_format = "%T" # Hour:Minute Format
-style = "bg:#1d2230"
-format = '[[  $time ](fg:#a0a9cb bg:#1d2230)]($style)'
+style = "bg:#0e1419"
+format = '[[ $time](fg:bright-yellow bg:#0e1419)]($style)'
 
