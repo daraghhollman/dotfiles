@@ -2,7 +2,7 @@ theme = "ayu_dark"
 
 [editor]
 line-number = "relative"
-mouse = false
+mouse = true
 bufferline = "multiple"
 
 # change cursor

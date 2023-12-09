@@ -18,11 +18,13 @@ alias grep='grep --color=auto'
 
 # Custom Aliases
 alias clear='clear && echo; /home/daraghhollman/Main/scripts/generateFetchPrompt.sh; neofetch --config /home/daraghhollman/.config/neofetch/bashrc_conf.conf --ascii_distro arch_small'
+alias todo="hx ~/todo"
 
 # SOFTWARE
 alias hx="helix"
 alias matlab="/home/daraghhollman/Installations/MatLab/2023b/bin/matlab"
 alias namd="/home/daraghhollman/Installations/NAMD_2.14_Linux-x86_64-multicore/namd2"
+alias aurora="cd /home/daraghhollman/Installations/Aurora4x/Aurora/; FONT_NAME="FreeSerif" FONT_SIZE=9 SCALEHACKX=1 SCALEHACKY=1 MONO_IOMAP=all mono Aurora.exe"
 
 # NAVIGATION
 alias ranger=". ranger"
@@ -52,7 +54,9 @@ eval "$(starship init bash)"
 eval "$(thefuck --alias)"
 
 
+# PRINTOUTS
 echo; /home/daraghhollman/Main/scripts/generateFetchPrompt.sh; neofetch --config /home/daraghhollman/.config/neofetch/bashrc_conf.conf --ascii_distro arch_small
+cat /home/daraghhollman/todo
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
