@@ -17,8 +17,9 @@ alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 
 # Custom Aliases
-alias clear='clear && echo; /home/daraghhollman/Main/scripts/generateFetchPrompt.sh; neofetch --config /home/daraghhollman/.config/neofetch/bashrc_conf.conf --ascii_distro arch_small'
+alias clear='clear && echo; /home/daraghhollman/Main/scripts/generateFetchPrompt.sh; neofetch --config /home/daraghhollman/.config/neofetch/bashrc_conf.conf'
 alias todo="hx ~/todo"
+alias paper="python ~/Main/Projects/NowADS/nowADS.py"
 
 # SOFTWARE
 alias hx="helix"
@@ -55,7 +56,7 @@ eval "$(thefuck --alias)"
 
 
 # PRINTOUTS
-echo; /home/daraghhollman/Main/scripts/generateFetchPrompt.sh; neofetch --config /home/daraghhollman/.config/neofetch/bashrc_conf.conf --ascii_distro arch_small
+echo; /home/daraghhollman/Main/scripts/generateFetchPrompt.sh; neofetch --config /home/daraghhollman/.config/neofetch/bashrc_conf.conf
 cat /home/daraghhollman/todo
 
 # >>> conda initialize >>>
