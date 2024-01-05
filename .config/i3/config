@@ -194,11 +194,6 @@ bindsym $mod+r mode "resize"
 gaps inner 20
 gaps outer 5
 
-# Wallpaper
-exec feh --bg-scale ~/Photos/Wallpapers/background.jpg
-
-#### Programs ####
-exec polybar
 
 
 # Colours
@@ -211,4 +206,21 @@ client.focused_tab_title #323232 #323232    #e5e1cf #f07078   #323232 #FFFFFF
 client.unfocused         #323232 #323232    #e5e1cf #f07078   #323232 #FFFFFF
 
 client.urgent            #ffa3aa #ffa3aa    #0e1419 #f07078   #ffa3aa #FFFFFF
+
+
+#### Start-up ####
+# Bar
+exec polybar
+
+# Wallpaper
+exec feh --bg-scale ~/Photos/Wallpapers/background.jpg
+
+# Notifications
+exec dunst
+
+# Bluetooth
+exec blueman-applet
+
+# Wifi
+exec nm-applet --indicator
 
