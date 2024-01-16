@@ -13,7 +13,6 @@ alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 
 # Custom Aliases
@@ -21,15 +20,17 @@ alias clear='clear && echo; /home/daraghhollman/Main/scripts/generateFetchPrompt
 alias todo="hx ~/todo"
 alias paper="python ~/Main/Projects/NowADS/nowADS.py"
 
+alias fetch="/home/daraghhollman/Main/scripts/infoDisplay.sh"
+
 # SOFTWARE
 alias hx="helix"
-alias matlab="/home/daraghhollman/Installations/MatLab/2023b/bin/matlab"
-alias namd="/home/daraghhollman/Installations/NAMD_2.14_Linux-x86_64-multicore/namd2"
 alias aurora="cd /home/daraghhollman/Installations/Aurora4x/Aurora/; FONT_NAME="FreeSerif" FONT_SIZE=9 SCALEHACKX=1 SCALEHACKY=1 MONO_IOMAP=all mono Aurora.exe"
+alias eww="/home/daraghhollman/Installations/eww/target/release/eww"
 
 # NAVIGATION
 alias ranger=". ranger"
 alias ls="exa"
+alias ll="exa -la"
 alias rm="rm -i"
 alias cal="cal -m"
 
@@ -37,6 +38,7 @@ alias mine="/home/daraghhollman/Installations/MineSweeper/mine"
 
 alias mail="firefox -new-window -url https://mail.google.com/mail/u/0/#inbox -new-tab -url https://mail.google.com/mail/u/1/#inbox -new-tab -url https://webmail.dias.ie/?_task=mail&_mbox=INBOX & disown; sleep 2; exit"
 
+# SSH
 alias ariadne="ssh dhollman@ariadne.dias.ie"
 alias mimir="ssh dhollman@mimir.ap.dias.ie"
 alias bnode="ssh dhollman@bnode.ap.dias.ie"
@@ -54,10 +56,6 @@ PS1='[\u@\h \W]\$ '
 eval "$(starship init bash)"
 eval "$(thefuck --alias)"
 
-
-# PRINTOUTS
-echo; /home/daraghhollman/Main/scripts/generateFetchPrompt.sh; neofetch --config /home/daraghhollman/.config/neofetch/bashrc_conf.conf
-cat /home/daraghhollman/todo
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!

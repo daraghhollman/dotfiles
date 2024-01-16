@@ -1,0 +1,113 @@
+
+// Variable Color's
+$background: #0e1419;
+$foreground: #e5e1cf;
+
+$black: #000000;
+$grey: #323232;
+
+$red: #f07078;
+$pink: #ffa3aa;
+
+$blue: #36a3d9;
+$light-blue: #68d4ff;
+
+$cyan: #95e5cb;
+$light-cyan: #c7fffc;
+
+$gold: #e6c446;
+$yellow: #fff778;
+
+$green: #b8cc52;
+$light-green: #e9fe83;
+
+
+// EWW BAR
+.eww_bar{
+  background: $background;
+  padding: .3rem;
+}
+
+// WORKSPACES
+
+.workspace-button {
+  all: unset;
+  color: $blue;
+}
+
+.workspace-active {
+  color: $red;
+}
+
+
+.time {
+  all: unset;
+  font-family: Courier Prime;
+  font-weight: bold;
+  font-size: 1.2em;
+
+  color: $foreground;
+  background-color: $grey;
+
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.bat{
+  font-family: JetBrainsMono Nerd Font;
+  font-size: 1.2em;
+  color: $yellow;
+}
+
+.wifi-icon {
+  all: unset;
+  font-family: JetBrainsMono Nerd Font;
+  font-size: 1.2em;
+  padding-right: .5rem;
+  color: $blue;
+}
+
+
+// Calendar
+.cal-box {
+  background-color: $background;
+  font-family: Courier Prime;
+  font-size: 1.35em;
+  font-weight: bold;
+
+  .cal-inner-box {
+      padding: 1rem 1rem .2rem;
+
+      .cal {
+          &.highlight {
+              padding: 10rem;
+          }
+
+          padding: .8rem .25rem 0rem;
+          margin-left: 10px;
+      }
+  }
+}
+
+calendar:selected {
+  color: $pink;
+  background: none;
+}
+
+calendar.header {
+color: $cyan;
+font-weight: bold;
+}
+
+calendar.button {
+color: $pink;
+}
+
+calendar.highlight {
+color: $cyan;
+font-weight: bold;
+}
+
+calendar:indeterminate {
+color: $background;
+}

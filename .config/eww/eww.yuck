@@ -1,0 +1,154 @@
+; ################################
+; WINDOWS
+; ################################
+
+; CALENDAR
+
+(defwindow calendar []
+	:monitor 0
+	:geometry (geometry :x "0.5%"
+	                    :y "71.5%"
+	                    :width "270px"
+	                    :height "60px"
+											:anchor "right top")
+	(cal)
+)
+
+; BAR
+(defwindow bar []
+          :monitor 0
+          :geometry (geometry :x "0px"
+                              :y "0"
+                              :width "50px"
+                              :height "100%"
+                              :anchor "right center")
+          :stacking "fg"
+          :exclusive true
+          :focusable false
+					:hexpand false
+	(bar))
+
+(defwidget bar []
+  (box
+    :class "eww_bar"
+    :orientation "v"
+			(top)
+			(middle)
+			(bottom)
+  )
+)
+
+(defwidget top []
+	(box
+		:orientation "v"
+		:space-evenly "false"
+		:valign "start"
+			(workspaces0)
+			(workspaces1)
+	)
+)
+
+(defwidget middle []
+	(box
+		:orientation "v"
+		:space-evenly false
+		:valign "end"
+		:spacing 15
+			(bat)
+			(wifi)
+	)
+)
+
+(defwidget bottom []
+	(box
+		:orientation "v"
+		:space-evenly "false"
+		:spacing 10
+		:valign "end"
+			(time)
+	)
+)
+
+
+; ################################
+; WIDGETS
+; ################################
+(deflisten workspace0 "hyprland-workspaces `hyprctl monitors -j | jq -r \".[0].name\"`")
+(deflisten workspace1 "hyprland-workspaces `hyprctl monitors -j | jq -r \".[1].name\"`")
+
+(defwidget workspaces0 []
+  (eventbox :onscroll "hyprctl dispatch workspace `echo {} | sed 's/up/+/\' | sed 's/down/-/'`1"
+    (box :class "workspaces"
+         :orientation "v"
+         :valign "start"
+      (for i in workspace0
+        (button
+          :onclick "hyprctl dispatch workspace ${i.id}"
+          :class "${i.class}"
+          "  ${i.name}")))))
+
+(defwidget workspaces1 []
+  (eventbox :onscroll "hyprctl dispatch workspace `echo {} | sed 's/up/+/\' | sed 's/down/-/'`1"
+    (box :class "workspaces"
+         :orientation "v"
+         :valign "start"
+      (for i in workspace1
+        (button
+          :onclick "hyprctl dispatch workspace ${i.id}"
+          :class "${i.class}"
+          "  ${i.name}")))))
+
+; Clock
+(defwidget time []
+  (box :orientation "vertical"
+       :valign "end"
+
+      (button :onclick "scripts/popup calendar"
+              :class "time" hour)
+      (button :onclick "scripts/popup calendar"
+              :class "time" min)
+
+  )
+)
+
+(defpoll hour	:interval "1s"	"date '+%H'")
+(defpoll min	:interval "1s"	"date '+%M'")
+
+
+;; Battery Widgets ;;
+(defwidget bat []
+	(box	:orientation "v"	
+	  (label :class "bat"	
+			:valign "end"		
+			:text battery
+			:tooltip "${battery-cappacity}")))
+      
+(defpoll battery			:interval "1s"	"scripts/battery icon")
+(defpoll battery-cappacity	:interval "1s"	"scripts/battery time")
+
+
+;; Wifi Widgets ;;
+(defwidget wifi []
+	(box		:orientation "v"  
+				:tooltip wifi-name
+	(button		:onclick "scripts/popup wifi" 
+				:class "wifi-icon" wifi-icon)))
+(defpoll wifi-icon :interval "1s" "scripts/wifi icon")
+(defpoll wifi-name :interval "1s" "scripts/wifi name")
+
+
+
+;; Calendar Widgets ;;
+(defwidget cal []
+	(box :class "cal-box" 
+		 :orientation "v"
+	(box :class "cal-inner-box"
+	(calendar :class "cal" 
+			  :day calendar_day 
+			  :month calendar_month 
+			  :year calendar_year)))
+)
+
+(defpoll calendar_day :interval "10h" "date '+%d'")
+(defpoll calendar_month :interval "10h" "scripts/calendar")
+(defpoll calendar_year :interval "10h" "date '+%Y'")
