@@ -27,7 +27,7 @@ calendar(){
 if [ "$1" = "launcher" ]; then
 $HOME/.local/bin/launcher
 elif [ "$1" = "wifi" ]; then
-foot -e nmtui
+foot --title="nmtui" nmtui
 elif [ "$1" = "audio" ]; then
 pavucontrol
 elif [ "$1" = "calendar" ]; then

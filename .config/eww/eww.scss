@@ -1,4 +1,3 @@
-
 // Variable Color's
 $background: #0e1419;
 $foreground: #e5e1cf;
@@ -21,50 +20,150 @@ $yellow: #fff778;
 $green: #b8cc52;
 $light-green: #e9fe83;
 
+$orange: #ff8f40;
+$light-orange: #ffb454;
+
+$purple: #d2a6ff;
+$light-purple: #d2a6ff;
+
+
+// Global
+*{
+  all: unset;
+}
+
 
 // EWW BAR
 .eww_bar{
   background: $background;
+  border-radius: 10;
+  margin: 5 2 5 2;
   padding: .3rem;
 }
 
 // WORKSPACES
 
 .workspace-button {
-  all: unset;
-  color: $blue;
+  font-family: Courier Prime;
+  font-weight: bold;
+  color: $light-blue;
 }
 
 .workspace-active {
-  color: $red;
+  color: $pink;
+}
+
+.top {
+  margin: 2;
+}
+
+.end {
+  background-color: $grey;
+  border-radius: 10;  
+  margin: 3;
+}
+
+.control-panel {
+  background-color: $grey;
+  border-radius: 10;  
+  margin: 3;
+  padding: 5 0 5 0;
+}
+
+
+.system-item {
+  background-color: $grey;
+  border-radius: 10;  
+  margin: 3;
+  padding: 5 0 5 0;
+  font-size: 14;
+}
+
+.cpu-icon {
+  padding-right: 0.4rem;
+  color: $orange;
+}
+.cpu-label {
+  color: $light-orange;
+}
+
+.memory-icon {
+  font-size: 1.2em;
+  padding-right: 0.2rem;
+  color: $purple;
+}
+.memory-label {
+  color: $light-purple;
+}
+
+.disk-icon {
+  font-size: 0.9em;
+  padding-right: 0.3rem;
+  color: $gold;
+}
+.disk-label {
+  color: $yellow;
 }
 
 
 .time {
-  all: unset;
   font-family: Courier Prime;
   font-weight: bold;
   font-size: 1.2em;
 
   color: $foreground;
-  background-color: $grey;
-
-  border-radius: 5px;
   padding: 5px;
 }
 
 .bat{
   font-family: JetBrainsMono Nerd Font;
-  font-size: 1.2em;
+  font-size: 1.5em;
   color: $yellow;
 }
 
 .wifi-icon {
-  all: unset;
   font-family: JetBrainsMono Nerd Font;
-  font-size: 1.2em;
+  font-size: 1.5em;
+  padding-right: .6rem;
+  color: $light-blue;
+}
+
+.brightness-icon{
+  color: $cyan;
+  font-size: 1.3em;
   padding-right: .5rem;
-  color: $blue;
+}
+
+.volume-icon{
+  color: $green;
+  font-size: 1.3em;
+  padding-right: .3rem;
+}
+
+scale trough {
+  background-color: $grey;
+  border-radius: 5px;
+  min-height: 60px;
+  min-width: 10px;
+  margin: .3rem 0 .3rem 0;
+}
+
+.bribar trough highlight {
+  background-color: $cyan;
+  border-radius: 5px;
+}
+
+.volbar trough highlight {
+  background-color: $green;
+  border-radius: 5px;
+}
+
+
+.switch-button {
+  font-family: JetBrainsMono Nerd Font;
+  font-size: 2em;
+  padding-right: .4rem;
+  color: $pink;
 }
 
 
@@ -110,4 +209,38 @@ font-weight: bold;
 
 calendar:indeterminate {
 color: $background;
+}
+
+
+// Powermenu
+.powermenu {
+  font-size: 1.4em;
+  font-weight: bold;
+}
+.system {
+  font-size: 1.3em;
+  padding-right: .4rem;
+}
+
+.system-container {
+  background-color: $background;
+  border-radius: 10;
+  margin: 0 3 3 3;
+}
+
+.button-bspres, .button-reb, .button-lock,
+.button-quit, .button-off{
+  padding: .5rem .2rem .3rem .2rem;
+}
+.button-off{
+  color: $red;
+}
+.button-reb{
+  color: $yellow
+}
+.button-quit{
+  color: $green;
+}
+.button-lock{
+  color: $blue;
 }

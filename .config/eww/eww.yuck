@@ -1,3 +1,5 @@
+(defvar eww "$HOME/Installations/eww/target/release/eww")
+
 ; ################################
 ; WINDOWS
 ; ################################
@@ -25,46 +27,75 @@
           :stacking "fg"
           :exclusive true
           :focusable false
-					:hexpand false
 	(bar))
 
 (defwidget bar []
   (box
     :class "eww_bar"
     :orientation "v"
-			(top)
-			(middle)
-			(bottom)
+		:hexpand false
+		:vexpand false
+		(top)
+		(bottom)
   )
 )
 
 (defwidget top []
 	(box
 		:orientation "v"
-		:space-evenly "false"
-		:valign "start"
-			(workspaces0)
-			(workspaces1)
-	)
-)
-
-(defwidget middle []
-	(box
-		:orientation "v"
 		:space-evenly false
-		:valign "end"
-		:spacing 15
-			(bat)
-			(wifi)
+		:valign "start"
+		:class "top"
+		(workspaces0)
+		(workspaces1)
 	)
 )
 
 (defwidget bottom []
 	(box
 		:orientation "v"
-		:space-evenly "false"
-		:spacing 10
+		:space-evenly false
 		:valign "end"
+		:spacing 10
+		(control)
+		(info)
+		(end)
+	)
+)
+
+(defwidget control []
+	(box
+		:orientation "v"
+		:space-evenly false
+		:valign "middle"
+		:spacing 5
+		:class "control-panel"
+			(bat)
+			(wifi)
+			(bright)
+			(volum)
+	)
+)
+
+(defwidget info []
+	(box
+		:orientation "v"
+		:space-evenly false
+		:valign "middle"
+		:spacing 5
+		(system)
+	)
+)
+
+(defwidget end []
+	(box
+		:orientation "v"
+		:space-evenly false
+		:spacing 5
+		:valign "end"
+		:class "end"
+			(switch)
+			(power)
 			(time)
 	)
 )
@@ -85,7 +116,7 @@
         (button
           :onclick "hyprctl dispatch workspace ${i.id}"
           :class "${i.class}"
-          "  ${i.name}")))))
+          " ${i.name}")))))
 
 (defwidget workspaces1 []
   (eventbox :onscroll "hyprctl dispatch workspace `echo {} | sed 's/up/+/\' | sed 's/down/-/'`1"
@@ -96,7 +127,7 @@
         (button
           :onclick "hyprctl dispatch workspace ${i.id}"
           :class "${i.class}"
-          "  ${i.name}")))))
+          " ${i.name}")))))
 
 ; Clock
 (defwidget time []
@@ -113,6 +144,106 @@
 
 (defpoll hour	:interval "1s"	"date '+%H'")
 (defpoll min	:interval "1s"	"date '+%M'")
+
+
+
+(defwidget system []
+	(eventbox	:onhover "${eww} update system=true"	
+				:onhoverlost "${eww} update system=false" 
+		(box		:orientation "v"					
+					:space-evenly "false" 	 
+					:vexpand "false" 	
+					:class "systemmenu"
+			(revealer	:transition "slideup"				
+						:reveal system		 
+						:duration "550ms"
+				(box	:orientation "v"					
+							:space-evenly "false"
+							:class "system-container"
+							(cpu)
+							(memory)
+							(disk)
+				)
+			)
+
+			(button :class "system-item" "󰒓")
+		)
+	)
+)
+(defvar system false)
+
+
+;; CPU Widgets ;;
+(defwidget cpu []
+	(box
+		:orientation "v"
+		:class "system-item"
+		(cpu-icon)
+		(cpu-label)
+	)
+)
+(defwidget cpu-icon []
+	(button
+		:onclick "foot btop & disown"
+		:class "cpu-icon" ""
+	)
+)
+(defwidget cpu-label []
+	(button
+		:onclick "foot btop & disown"
+		:class "cpu-label" cpu-percentage
+	)
+)
+(defpoll cpu-percentage :interval "1s" "scripts/system cpu")
+
+
+
+;; MEMORY Widgets ;;
+(defwidget memory []
+	(box
+		:orientation "v"
+		:class "system-item"
+		(memory-icon)
+		(memory-label)
+	)
+)
+(defwidget memory-icon []
+	(button
+		:onclick "foot btop & disown"
+		:class "memory-icon" "󰍛"
+	)
+)
+(defwidget memory-label []
+	(button
+		:onclick "foot btop & disown"
+		:class "memory-label" memory-percentage
+	)
+)
+(defpoll memory-percentage :interval "1s" "scripts/system memory")
+
+
+;; DISK Widgets ;;
+(defwidget disk []
+	(box
+		:orientation "v"
+		:class "system-item"
+		(disk-icon)
+		(disk-label)
+	)
+)
+(defwidget disk-icon []
+	(button
+		:onclick "foot btop & disown"
+		:class "disk-icon" ""
+	)
+)
+(defwidget disk-label []
+	(button
+		:onclick "foot btop & disown"
+		:class "disk-label" disk-percentage
+	)
+)
+(defpoll disk-percentage :interval "1s" "scripts/system disk")
 
 
 ;; Battery Widgets ;;
@@ -138,6 +269,71 @@
 
 
 
+;; Switch Theme Button ;;
+(defwidget switch []
+	(box
+		:orientation "v"
+		:tooltip "Switch Theme"
+		(button
+			:onclick "scripts/baraction light"
+			:class "switch-button" switch-icon
+		)
+	)
+)
+(defpoll switch-icon :interval "1s" "scripts/switch-icon theme")
+
+
+
+; Brightness Widgets ;;
+(defwidget bright []
+  (eventbox :onhover "${eww} update bright=true"   
+  			:onhoverlost "${eww} update bright=false"
+  			(box    :orientation "v"  
+			  		:space-evenly "false"  
+					:spacing 2
+  			(revealer :transition "slideup" 
+			  		  :reveal bright   
+					  :duration "550ms"
+  			(scale :class "bribar" 
+			  	   :value current-brightness 
+				   :tooltip "Brightness: ${current-brightness}%" 
+				   :onchange "brightnessctl set {}%" 
+				   :orientation "v" 
+				   :flipped true 
+				   :max 101 
+				   :min 0))
+  			(label :class "brightness-icon" 
+			  	   :text ""))))
+(defpoll current-brightness :interval "1s" "brightnessctl -m | awk -F, '{print substr($4, 0, length($4)-1)}' | tr -d '%'")
+(defvar bright false)
+
+
+
+;; Volume Widgets ;;
+(defwidget volum []
+	(eventbox :onhover "${eww} update volum=true" 		
+			  :onhoverlost "${eww} update volum=false"
+	(box      :orientation "v" 	  
+			  :space-evenly "false" 
+			  :spacing "2"
+	(revealer :transition "slideup" 
+			  :reveal volum         
+			  :duration "550ms"
+	(scale    :class "volbar" 	  
+			  :value current-volume 
+			  :orientation "v"      
+			  :flipped true 
+			  :tooltip "Volume: ${current-volume}%" 
+			  :max 101 
+			  :min 0 
+			  :onchange "amixer -D pulse sset Master {}%" ))
+	(button   :onclick "scripts/popup audio"   :class "volume-icon" vol-icon))))
+(defpoll current-volume :interval "1s" "amixer -D pulse sget Master | grep 'Left:' | awk -F'[][]' '{ print $2 }' | tr -d '%'")
+(defpoll vol-icon :interval "0.5s" "scripts/switch-icon volume")
+(defvar volum false)
+
+
+
 ;; Calendar Widgets ;;
 (defwidget cal []
 	(box :class "cal-box" 
@@ -152,3 +348,43 @@
 (defpoll calendar_day :interval "10h" "date '+%d'")
 (defpoll calendar_month :interval "10h" "scripts/calendar")
 (defpoll calendar_year :interval "10h" "date '+%Y'")
+
+
+;; Powermenu Widgets ;;
+(defwidget power []
+	(eventbox	:onhover "${eww} update power=true"	
+				:onhoverlost "${eww} update power=false" 
+	(box		:orientation "v"					
+				:space-evenly "false" 	 
+				:vexpand "false" 	
+				:class "powermenu"
+	(revealer	:transition "slideup"				
+				:reveal power			 
+				:duration "550ms"
+		(box		:orientation "v"					
+					:space-evenly "false"
+					:class "system-container"
+
+			(button		:class "button-quit" 				
+						:tooltip "Logout" 		 
+						:onclick "killall Hyprland" "")
+
+			(button		:class "button-lock" 				
+						:tooltip "Lock Screen"	 
+						:onclick "swaylock -f -i ~/Photos/Wallpapers/background-dark.jpg; hyprctl dispatch dpms off"	"")
+
+			(button		:class "button-reb"					
+		  			:tooltip "Reboot"		 
+					:onclick "reboot"	"")
+
+			(button		:class "button-off"					
+						:tooltip "Shutdown"		 
+						:onclick "shutdown now"	"")
+		)
+	)
+
+	(button :class "system" "󰣇")
+	
+)))
+(defvar power false)
+
