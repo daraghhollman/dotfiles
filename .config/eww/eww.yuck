@@ -166,7 +166,10 @@
 				)
 			)
 
-			(button :class "system-item" "󰒓")
+			(button
+				:onclick "foot btop & disown"
+				:class "system-item" "󰒓"
+			)
 		)
 	)
 )
@@ -252,10 +255,10 @@
 	  (label :class "bat"	
 			:valign "end"		
 			:text battery
-			:tooltip "${battery-cappacity}")))
+			:tooltip "${battery-cappacity}%")))
       
 (defpoll battery			:interval "1s"	"scripts/battery icon")
-(defpoll battery-cappacity	:interval "1s"	"scripts/battery time")
+(defpoll battery-cappacity	:interval "1s"	"scripts/battery percent")
 
 
 ;; Wifi Widgets ;;

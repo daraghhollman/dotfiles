@@ -17,7 +17,7 @@ alias grep='grep --color=auto'
 
 # Custom Aliases
 alias clear='clear && echo; /home/daraghhollman/Main/scripts/generateFetchPrompt.sh; neofetch --config /home/daraghhollman/.config/neofetch/bashrc_conf.conf'
-alias todo="hx ~/todo"
+#alias todo="hx ~/todo"
 alias paper="python ~/Main/Projects/NowADS/nowADS.py"
 
 alias fetch="/home/daraghhollman/Main/scripts/infoDisplay.sh"
@@ -74,3 +74,5 @@ unset __conda_setup
 
 export PATH="/usr/local/texlive/2023/bin/x86_64-linux:$PATH"
 . "$HOME/.cargo/env"
+
+export PATH="$HOME/Main/scripts:$PATH"

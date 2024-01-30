@@ -1,20 +1,21 @@
 #!/bin/sh
 
 bars="$(nmcli dev wifi list | awk '/\*/{if (NR!=1) {print $8}}')"
+barsAlt="$(nmcli dev wifi list | awk '/\*/{if (NR!=1) {print $9}}')"
 
 symbol() {
 [ $(cat /sys/class/net/w*/operstate) = down ] && echo 󰤮 && exit
 
-if [ $bars -gt 80 ]; then
+if [ $bars -gt 80 ] || [ $barsAlt -gt 80 ]; then
   echo 󰤨
     
-elif [ $bars -gt 60 ]; then
+elif [ $bars -gt 60 ] || [ $barsAlt -gt 60 ]; then
   echo 󰤥
 
-elif [ $bars -gt 40 ]; then
+elif [ $bars -gt 40 ] || [ $barsAlt -gt 40 ]; then
   echo 󰤢 
 
-elif [ $bars -gt 20 ]; then
+elif [ $bars -gt 20 ] || [ $barsAlt -gt 20 ]; then
   echo 󰤟
     
 else

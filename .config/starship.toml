@@ -5,9 +5,6 @@ $hostname\
 $env_var\
 $git_branch\
 $git_status\
-$fill\
-$battery  \
-$time  \
 \n> 
 """
 
