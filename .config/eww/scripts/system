@@ -1,0 +1,28 @@
+#!/bin/sh
+
+cpu() {
+  percentage=$(top -bn1 | grep load | awk '{printf "%.0f%%\t\t\n", $(NF-2)}')
+  echo $percentage
+}
+
+memory() {
+  percentage=$(free -m | awk 'NR==2{printf "%.0f%%\t\t", $3*100/$2 }')
+  echo $percentage
+}
+
+disk() {
+  percentage=$(df -h | awk '$NF=="/"{printf "%s\t\t", $5}')
+  echo $percentage
+}
+
+
+if [ "$1" = "cpu" ]; then
+  cpu
+
+elif [ "$1" = "memory" ]; then
+  memory
+
+elif [ "$1" = "disk" ]; then
+  disk
+  
+fi

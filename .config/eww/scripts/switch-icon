@@ -1,0 +1,50 @@
+#!/bin/sh
+
+theme() {
+# Check current theme
+export STATUS_FILE="/home/daraghhollman/theme.status"
+
+
+if [[ $(cat $STATUS_FILE) == "light" ]]; then
+  icon=󰔡
+else
+  icon=󰨙
+fi
+
+echo $icon
+
+}
+
+
+volume() {
+  vol="$(amixer -D pulse sget Master | grep 'Left:' | awk -F'[][]' '{ print $2 }' | tr -d '%')"
+
+  # Returns 0 if muted, 2 if not
+  muted="$(amixer -D pulse sget Master | tail -2 | grep -c '\[on\]')"
+
+  if [ $muted = 0 ]; then
+    echo 󰝟 && exit
+  fi
+
+  if [ $vol -gt 66 ]; then
+    echo 
+
+  elif [ $vol -gt 33 ]; then
+    echo 
+
+  elif [ $vol -gt 0 ]; then
+    echo 
+
+  else
+    echo 󰝟
+    
+  fi
+}
+
+
+if [ "$1" = "theme" ]; then
+  theme
+
+elif [ "$1" = "volume" ]; then
+  volume
+fi

@@ -1,4 +1,5 @@
 format = """
+$python\
 $directory\
 $username\
 $hostname\
@@ -36,6 +37,9 @@ variable = 'CONDA_DEFAULT_ENV'
 format = "[ $env_value ](fg:e5e1cf bg:#0e1419)"
 disabled = false
 default = ''
+
+[python]
+format = '[(( $virtualenv ))]($style)'
 
 [git_branch]
 symbol = ""

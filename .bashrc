@@ -15,12 +15,16 @@ alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 
 alias grep='grep --color=auto'
 
-# Custom Aliases
+# Scripts
 alias clear='clear && echo; /home/daraghhollman/Main/scripts/generateFetchPrompt.sh; neofetch --config /home/daraghhollman/.config/neofetch/bashrc_conf.conf'
-#alias todo="hx ~/todo"
 alias paper="python ~/Main/Projects/NowADS/nowADS.py"
-
 alias fetch="/home/daraghhollman/Main/scripts/infoDisplay.sh"
+alias backup="sudo rsync -av --delete /home/daraghhollman/ /run/media/daraghhollman/Backups/Copernicus_Home/"
+
+# Open pdfs
+ReadPDF() {
+    pdftotext -layout "$1" - | less
+}
 
 # SOFTWARE
 alias hx="helix"
@@ -34,7 +38,7 @@ alias ll="exa -la"
 alias rm="rm -i"
 alias cal="cal -m"
 
-alias mine="/home/daraghhollman/Installations/MineSweeper/mine"
+alias comets="cd /home/daraghhollman/Main/CometsThesis/; source ./Python/cometPy/bin/activate"
 
 alias mail="firefox -new-window -url https://mail.google.com/mail/u/0/#inbox -new-tab -url https://mail.google.com/mail/u/1/#inbox -new-tab -url https://webmail.dias.ie/?_task=mail&_mbox=INBOX & disown; sleep 2; exit"
 
@@ -44,6 +48,9 @@ alias mimir="ssh dhollman@mimir.ap.dias.ie"
 alias bnode="ssh dhollman@bnode.ap.dias.ie"
 
 alias onefetch="onefetch --type programming --number-of-authors 5"
+
+# Python
+alias cometPy="source /home/daraghhollman/Main/CometsThesis/Python/cometPy/bin/activate"
 
 # Navigation
 alias ..='cd ..'
@@ -76,3 +83,5 @@ export PATH="/usr/local/texlive/2023/bin/x86_64-linux:$PATH"
 . "$HOME/.cargo/env"
 
 export PATH="$HOME/Main/scripts:$PATH"
+
+eval "$(zoxide init bash)"

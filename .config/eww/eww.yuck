@@ -278,7 +278,7 @@
 		:orientation "v"
 		:tooltip "Switch Theme"
 		(button
-			:onclick "scripts/baraction light"
+			:onclick "scripts/baraction"
 			:class "switch-button" switch-icon
 		)
 	)
