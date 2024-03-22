@@ -374,7 +374,7 @@
 
 			(button		:class "button-lock" 				
 						:tooltip "Lock Screen"	 
-						:onclick "swaylock -f -i ~/Photos/Wallpapers/background-dark.jpg; hyprctl dispatch dpms off"	"")
+						:onclick "hyprlock"	"")
 
 			(button		:class "button-reb"					
 		  			:tooltip "Reboot"		 

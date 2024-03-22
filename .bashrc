@@ -42,6 +42,11 @@ alias comets="cd /home/daraghhollman/Main/CometsThesis/; source ./Python/cometPy
 
 alias mail="firefox -new-window -url https://mail.google.com/mail/u/0/#inbox -new-tab -url https://mail.google.com/mail/u/1/#inbox -new-tab -url https://webmail.dias.ie/?_task=mail&_mbox=INBOX & disown; sleep 2; exit"
 
+
+# FINDING CONFIGS
+alias hyprconfig="nvim /home/daraghhollman/.config/hypr/hyprland.conf"
+
+
 # SSH
 alias ariadne="ssh dhollman@ariadne.dias.ie"
 alias mimir="ssh dhollman@mimir.ap.dias.ie"
