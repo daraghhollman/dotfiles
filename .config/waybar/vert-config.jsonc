@@ -1,0 +1,156 @@
+{
+    "layer": "top",
+    "output": "eDP-1",
+    "position": "right",
+    "height": "0px",
+    "margin": "5px",
+    "modules-left": [
+        "hyprland/workspaces",
+        "custom/updates",
+        "tray"
+    ],
+    "modules-center": [
+        "battery",
+        "backlight",
+        "pulseaudio",
+        "pulseaudio#microphone"
+    ],
+    "modules-right": [
+        "temperature",
+        "custom/light_dark",
+        "clock"
+    ],
+
+    "clock": {
+        "format": "{:%H\n%M}",
+        "interval": 1,
+        "tooltip-format": "{:%Y-%m-%d}"
+    },
+    
+    "custom/light_dark": {
+        "format": "󰣇",
+        "on-click": "~/.config/waybar/scripts/baraction light",
+        "tooltip": false
+    },
+
+    "hyprland/workspaces": {
+        "format": "{icon} <sub>{name}</sub>",
+        "disable-scroll": true,
+        "all-outputs": true,
+	      "sort-by-number": true,
+        "format-icons": {
+          "urgent": "",
+          "active": "",
+          "default": ""
+        }
+    },
+
+    "cpu": {
+        "interval": 1,
+        "format": "  \n{usage} %",
+        "on-click": "foot -F -T btop sh -c 'btop'"
+    },
+    "memory": {
+        "interval": 1,
+        "format": "  {}%",
+        "on-click": "foot -F -T sh -c 'btop'"
+    },
+
+    "temperature": {
+        "format": "{icon}",
+        "critical-threshold": 70,
+        "format-critical": "{temperatureC}°C",
+        "format-icons": ["", "", "", ""]
+
+    },
+
+    "battery": {
+        "states": {
+            "good": 80,
+            "warning": 30,
+            "critical": 20
+        },
+        "format": "{icon}",
+        "format-alt-click": "click-left",
+        "format-alt": "{capacity}%",
+        "format-charging": "",
+        "format-plugged": "",
+        "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+    },
+
+    "network": {
+        "format": "⚠  Disabled",
+        "format-wifi": "  {essid}",
+        "format-ethernet": "  Wired",
+        "format-disconnected": "⚠  Disconnected",
+        "on-click": "nm-connection-editor"
+    },
+
+    "pulseaudio": {
+        "format": "{icon}",
+        "format-muted": " ",
+        "format-alt-click": "click-left",
+        "format-alt": "{volume}%",
+        "on-click-right": "pavucontrol",
+        "on-scroll-up": "~/.config/waybar/scripts/volume --dec",
+        "on-scroll-down": "~/.config/waybar/scripts/volume --inc",
+        "scroll-step": 1,
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        }
+    },
+
+    "pulseaudio#microphone": {
+        "format": "{format_source}",
+        "format-source": "",
+        "format-source-muted": " ",
+        "on-click-right": "~/.config/waybar/scripts/volume --toggle-mic",
+        "format-alt-click": "click-left",
+        "format-alt": "{volume}%",
+        "on-scroll-up": "~/.config/waybar/scripts/volume --mic-dec",
+        "on-scroll-down": "~/.config/waybar/scripts/volume --mic-inc",
+        "scroll-step": 1
+    },
+
+    "backlight": {
+        "device": "intel_backlight",
+        "format": "{icon}",
+        "format-alt": "{percent}%",
+        "format-alt-click": "click-left",
+        "format-icons": ["󰃞", "󰃟", "󰃠"],
+        "on-scroll-up": "~/.config/waybar/scripts/brightness --dec",
+        "on-scroll-down": "~/.config/waybar/scripts/brightness --inc"
+    },
+
+    "tray": {
+        "icon-size": 18,
+        "spacing": 5
+    },
+
+    "custom/updates": {
+        "format": "{}",
+        "exec": "~/.config/HyprV/waybar/scripts/update-sys",
+        "on-click": "~/.config/HyprV/waybar/scripts/update-sys update",
+        "interval": 300,
+        "tooltip": true
+    },
+
+    "custom/spotify": {
+      "exec": "/usr/bin/python3 ~/.config/waybar/mediaplayer.py --player spotify",
+      "format": "<span color=\"#1ED760\"></span> {}",
+      "return-type": "json",
+      "on-click": "playerctl play-pause",
+      "on-scroll-up": "playerctl next",
+      "on-scroll-down": "playerctl previous",
+      "max-length": 100
+    },
+    "custom/cava": {
+        "exec": "sh ~/.config/waybar/Cava.sh"
+    }
+}

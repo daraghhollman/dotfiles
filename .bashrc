@@ -40,6 +40,8 @@ alias cal="cal -m"
 
 alias comets="cd /home/daraghhollman/Main/CometsThesis/; source ./Python/cometPy/bin/activate"
 
+alias thesis="cd /home/daraghhollman/Main/CometsThesis/Writing/Thesis; evince main.pdf & nvim ./main.tex"
+
 alias mail="firefox -new-window -url https://mail.google.com/mail/u/0/#inbox -new-tab -url https://mail.google.com/mail/u/1/#inbox -new-tab -url https://webmail.dias.ie/?_task=mail&_mbox=INBOX & disown; sleep 2; exit"
 
 

@@ -1,0 +1,158 @@
+@import "ayu.css";
+
+* {
+    color: @foreground;
+    border: 2px;
+    border-radius: 10px;
+    font-family: "Courier Prime";
+    font-weight: bold;
+    font-size: 20px;
+}
+
+window#waybar {
+    background-color: @background;
+}
+
+#tooltip {
+    background: @grey;
+    opacity: 0.5;
+    border-radius: 10px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #11111b;
+}
+
+#tooltip label{
+    color: @grey;
+}
+
+#workspaces button {
+    padding: 5px;
+    border-radius: 10px;
+}
+
+#workspaces button.active * {
+    color: @seaglass;
+}
+
+#workspaces button:hover * {
+    color: @turquoise;
+}
+
+#workspaces * {
+    color: @foreground;
+}
+
+#workspaces {
+    background-color: @grey;
+    padding-left: 5px;
+    margin: 5px;
+}
+
+#custom-light_dark {
+    font-size: 30;
+    background-color: @grey;
+    padding-left: 5px;
+    padding-right: 10px;
+    margin: 5px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    border-radius: 0px;
+}
+#custom-updates {
+    background-color: @grey;
+    padding: 5px;
+    margin: 5px;
+}
+#clock {
+    background-color: @grey;
+    padding: 5px;
+    margin: 5px;
+    margin-top: 0px;
+    border-radius: 0px 0px 10px 10px;
+}
+
+#battery {
+    color: @lemon;
+    background-color: @grey;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin: 5px;
+    margin-bottom: 0px;
+    border-radius: 10px 10px 0px 0px;
+}
+#backlight {
+    color: @seaglass;
+    background-color: @grey;
+    padding-left: 0px;
+    padding-right: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin: 5px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    border-radius: 0px;
+}
+#pulseaudio {
+    color: @olive;
+    background-color: @grey;
+    padding-left: 0px;
+    padding-right: 5px;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    margin: 5px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    border-radius: 0px;
+}
+#pulseaudio.microphone {
+    color: @lime;
+    background-color: @grey;
+    padding: 5px;
+    margin: 5px;
+    margin-top: 0px;
+    border-radius: 0px 0px 10px 10px;
+}
+
+#tray {
+    background-color: @grey;
+    padding: 5px;
+    margin: 5px;
+    font-size: 24;
+}
+
+#temperature.critical {
+    color: @red;
+}
+
+#temperature {
+    background-color: @grey;
+    padding: 5px;
+    margin: 5px;
+    margin-bottom: 0px;
+    border-radius: 10px 10px 0px 0px;
+}
+
+#custom-cava {
+    background-color: @bg-accent;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin: 5px;
+    border: 2px;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: @flamingo;
+}
+
+#custom-spotify {
+    padding-left: 5px;
+    padding-right: 5px;
+    margin: 5px;
+    border: 2px;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: @flamingo;
+    background-color: @bg-accent;
+}

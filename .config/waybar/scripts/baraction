@@ -27,9 +27,6 @@ gsettings set org.gnome.desktop.interface gtk-theme "Adwaita$SWITCHTO"
 #change the background image
 swww img ~/Photos/Wallpapers/'background'$SWITCHTO.jpg --transition-fps 60 --transition-type wipe --transition-duration 2
 
-#update the sddm image
-cp -f ~/Photos/Wallpapers/'background'$SWITCHTO.jpg /usr/share/sddm/themes/sdt/wallpaper.jpg
-
 # restart waybar
 pkill waybar
-waybar &
+waybar -c ~/.config/waybar/vert-config.jsonc -s ~/.config/waybar/vert-style.css &
