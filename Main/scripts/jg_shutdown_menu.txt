@@ -1,0 +1,3 @@
+Lock, i3lock
+Reboot, systemctl -i reboot
+Poweroff, systemctl -i poweroff

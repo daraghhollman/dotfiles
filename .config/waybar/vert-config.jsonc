@@ -3,7 +3,7 @@
     "output": "eDP-1",
     "position": "right",
     "height": "0px",
-    "margin": "5px",
+    "margin": "10px 5px 10px 0px",
     "modules-left": [
         "hyprland/workspaces",
         "custom/updates",
@@ -88,7 +88,7 @@
 
     "pulseaudio": {
         "format": "{icon}",
-        "format-muted": " ",
+        "format-muted": "",
         "format-alt-click": "click-left",
         "format-alt": "{volume}%",
         "on-click-right": "pavucontrol",
@@ -107,12 +107,12 @@
     },
 
     "pulseaudio#microphone": {
-        "format": "{format_source}",
-        "format-source": "",
+        "format": "",
+        "format-source": "{volume}%",
         "format-source-muted": " ",
         "on-click-right": "~/.config/waybar/scripts/volume --toggle-mic",
         "format-alt-click": "click-left",
-        "format-alt": "{volume}%",
+        "format-alt": "{format_source}",
         "on-scroll-up": "~/.config/waybar/scripts/volume --mic-dec",
         "on-scroll-down": "~/.config/waybar/scripts/volume --mic-inc",
         "scroll-step": 1

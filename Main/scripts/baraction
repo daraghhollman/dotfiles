@@ -25,17 +25,14 @@ xfconf-query -c xsettings -p /Net/ThemeName -s "Adwaita$SWITCHTO"
 gsettings set org.gnome.desktop.interface gtk-theme "Adwaita$SWITCHTO"
 
 #change the background image
-swww img ~/Photos/Wallpapers/'background'$SWITCHTO.jpg --transition-fps 60 --transition-type wipe --transition-duration 2
-
+feh --bg-scale ~/Photos/Wallpapers/'background'$SWITCHTO.jpg
 
 if [[ $MODESTR == "Light" ]]; then
-    cp /home/daraghhollman/.config/hypr/hyprlock-light.conf /home/daraghhollman/.config/hypr/hyprlock.conf
+    cp /home/daraghhollman/hyprlock-light.conf /home/daraghhollman/hyprlock.conf
 
 else
-    cp /home/daraghhollman/.config/hypr/hyprlock-dark.conf /home/daraghhollman/.config/hypr/hyprlock.conf
+    cp /home/daraghhollman/hyprlock-dark.conf /home/daraghhollman/hyprlock.conf
 
-fi
-
-# restart waybar
-pkill waybar
-waybar -c ~/.config/waybar/vert-config.jsonc -s ~/.config/waybar/vert-style.css &
+# restart bar
+pkill polybar
+polybar &

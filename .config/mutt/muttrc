@@ -1,0 +1,19 @@
+source ~/.config/mutt/mutt_secrets
+source ~/.config/mutt/colour.muttrc
+
+set folder = "imaps://hollmandaragh@gmail.com@imap.gmail.com:993"
+set smtp_url = "smtp://hollmandaragh@gmail.com@smtp.gmail.com:587"
+
+set realname = "Daragh Hollman"
+set from = "hollmandaragh@gmail.com"
+
+set spoolfile = "+INBOX"
+
+set record = "Sent"
+set trash =  "Archived"
+set postponed = "Drafts"
+
+mailboxes =INBOX =Sent =Archived =Drafts
+
+
+set editor = "nvim"

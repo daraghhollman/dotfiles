@@ -1,0 +1,19 @@
+#!/bin/sh
+
+TODO_FILE="$HOME/todo"
+
+edit() {
+  nvim $TODO_FILE
+}
+
+list() {
+  cat $TODO_FILE
+}
+
+if [ "$1" = "edit" ]; then
+  edit
+
+else
+  clear
+  list
+fi

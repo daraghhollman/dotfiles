@@ -1,0 +1,4 @@
+#!/bin/sh
+
+FOOT_STATUS=$(ps -fC foot | grep "dropdown")
+[ -z "${FOOT_STATUS}" ] && hyprctl dispatch exec [workspace special] "foot --title=foot-dropdown"

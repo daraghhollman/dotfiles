@@ -50,6 +50,8 @@ alias hyprconfig="nvim /home/daraghhollman/.config/hypr/hyprland.conf"
 
 
 # SSH
+alias kepler="ssh 192.168.0.73"
+
 alias ariadne="ssh dhollman@ariadne.dias.ie"
 alias mimir="ssh dhollman@mimir.ap.dias.ie"
 alias bnode="ssh dhollman@bnode.ap.dias.ie"
