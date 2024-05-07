@@ -60,8 +60,9 @@ window#waybar {
     border-radius: 0px;
 }
 #custom-updates {
+    font-size: 15;
     background-color: @grey;
-    padding: 5px;
+    padding: 5px 0px 5px 5px;
     margin: 5px;
 }
 #clock {
