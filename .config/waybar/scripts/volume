@@ -24,17 +24,19 @@ get_icon() {
 
 # Notify
 notify_user() {
-	notify-send -h string:x-canonical-private-synchronous:sys-notify -u low -i "$(get_icon)" "Volume : $(get_volume) %"
+    notify-send -h string:x-canonical-private-synchronous:sys-notify -u low -i "$(get_icon)" "Volume : $(get_volume) %"
 }
 
 # Increase Volume
 inc_volume() {
-	pamixer -i 1 && notify_user
+    step=${1:-1}
+    pamixer -i "$step" && notify_user
 }
 
 # Decrease Volume
 dec_volume() {
-	pamixer -d 1 && notify_user
+    step=${1:-1}
+    pamixer -d "$step" && notify_user
 }
 
 # Toggle Mute
@@ -86,9 +88,9 @@ dec_mic_volume() {
 if [[ "$1" == "--get" ]]; then
 	get_volume
 elif [[ "$1" == "--inc" ]]; then
-	inc_volume
+	inc_volume "$2"
 elif [[ "$1" == "--dec" ]]; then
-	dec_volume
+	dec_volume "$2"
 elif [[ "$1" == "--toggle" ]]; then
 	toggle_mute
 elif [[ "$1" == "--toggle-mic" ]]; then

@@ -15,6 +15,9 @@ alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 
 ### ALIASES ###
 # General
+
+alias bemenu='bemenu-style'
+
 alias grep='grep --color=auto'
 alias ranger=". ranger"
 alias ls="exa"
@@ -26,10 +29,14 @@ alias ....='cd ..; cd ..; cd ..'
 alias .....='cd ..; cd ..; cd ..; cd ..;'
 
 # Scripts
+alias yt='youtube-dl --add-metadata -i'
+alias yta='yt -x -f bestaudio/best'
 alias clear='clear && echo; /home/daraghhollman/Main/scripts/generateFetchPrompt.sh; neofetch --config /home/daraghhollman/.config/neofetch/bashrc_conf.conf'
 alias paper="python ~/Main/Projects/NowADS/nowADS.py"
 alias fetch="/home/daraghhollman/Main/scripts/infoDisplay.sh"
-alias backup="sudo rsync -av --delete /home/daraghhollman/ /run/media/daraghhollman/Backups/Copernicus_Home/"
+alias backup="sudo rsync -auP --delete /home/daraghhollman/ /run/media/daraghhollman/SanDisk-Daragh/Copernicus_Home/"
+alias onlineBackup='read -s -p "Remote sudo password: " SUDOPASS && rsync -auP --delete --stats --rsync-path="echo $SUDOPASS | sudo -Sv && sudo rsync" /home/daraghhollman/ daraghhollman@192.168.0.73:/media/root/Backups/Copernicus_Home/'
+
 
 # Software
 alias hx="helix"
@@ -82,6 +89,8 @@ export TEXMFCONFIG=$XDG_CONFIG_HOME/texlive/texmf-config
 export W3M_DIR="$XDG_STATE_HOME/w3m" 
 alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
 alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
-alias mbsync='mbsync -c "$XDG_CONFIG_HOME"/isync/mbsyncrc '
+alias mbsync='mbsync -c ~/.mbsyncrc'
 alias nvidia-settings='nvidia-settings --config="$XDG_CONFIG_HOME"/nvidia/settings'
 export HISTFILE="$XDG_STATE_HOME"/bash/history
+export VSCODE_PORTABLE="$XDG_DATA_HOME"/vscode
+export GOPATH="$XDG_DATA_HOME"/go
