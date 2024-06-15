@@ -37,6 +37,8 @@ alias fetch="/home/daraghhollman/Main/scripts/infoDisplay.sh"
 alias backup="sudo rsync -auP --delete /home/daraghhollman/ /run/media/daraghhollman/SanDisk-Daragh/Copernicus_Home/"
 alias onlineBackup='read -s -p "Remote sudo password: " SUDOPASS && rsync -auP --delete --stats --rsync-path="echo $SUDOPASS | sudo -Sv && sudo rsync" /home/daraghhollman/ daraghhollman@192.168.0.73:/media/root/Backups/Copernicus_Home/'
 
+# Virual Environments
+alias jupt_testing="source ~/Main/envs/jupt_testing/bin/activate"
 
 # Software
 alias hx="helix"

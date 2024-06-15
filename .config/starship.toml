@@ -3,7 +3,6 @@ $python\
 $directory\
 $username\
 $hostname\
-$env_var\
 $git_branch\
 $git_status\
 \n> 
@@ -42,7 +41,7 @@ default = ''
 format = '[(( $virtualenv ))]($style)'
 
 [git_branch]
-symbol = ""
+symbol = ""
 format = '[[ $symbol $branch ](fg:bright-blue bg:#0e1419)]($style)'
 
 [git_status]
