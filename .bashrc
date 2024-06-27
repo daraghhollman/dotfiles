@@ -39,7 +39,7 @@ alias onlineBackup='read -s -p "Remote sudo password: " SUDOPASS && rsync -auP -
 
 # Virual Environments
 alias jupt_testing="source ~/Main/envs/jupt_testing/bin/activate"
-alias spade_testing="source ~/Main/envs/spade_testing/bin/activate"
+alias cometPy="source /home/daraghhollman/Main/CometsThesis/Python/cometPy/bin/activate"
 
 # Software
 alias hx="helix"
@@ -49,6 +49,7 @@ alias cal="cal -m"
 # Navigation
 alias comets="cd /home/daraghhollman/Main/CometsThesis/; source ./Python/cometPy/bin/activate"
 alias thesis="cd /home/daraghhollman/Main/CometsThesis/Writing/Thesis; evince main.pdf & nvim ./main.tex"
+alias spade="cd /home/daraghhollman/Main/Projects/SPADE/; source /home/daraghhollman/Main/envs/spade_testing/bin/activate"
 
 # Open Configs
 alias hyprconfig="nvim /home/daraghhollman/.config/hypr/hyprland.conf"
@@ -58,9 +59,6 @@ alias kepler="ssh 192.168.0.73"
 alias ariadne="ssh dhollman@ariadne.dias.ie"
 alias mimir="ssh dhollman@mimir.ap.dias.ie"
 alias bnode="ssh dhollman@bnode.ap.dias.ie"
-
-# Environments
-alias cometPy="source /home/daraghhollman/Main/CometsThesis/Python/cometPy/bin/activate"
 
 # Other
 alias pylint="pylint --rcfile /home/daraghhollman/.config/pylintrc"
