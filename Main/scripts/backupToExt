@@ -1,0 +1,81 @@
+#!/bin/sh
+#
+#
+# Script will search for all unmounted external drives. i.e. sdb, sdc, ...
+# It will present these in a list to the user, for them to chose where to backup to.
+# Flags are available to skip this part if only one is found.
+# 
+# By default, it backs up the home directory, but arguments can be passed to specify a specific path. Arguments can also be specified to back up to different path on drive.
+# NOTE TO SELF: look into creating a man entry.
+
+mount_directory="/run/media/BackupDrive"
+directory_to_backup="/home/daraghhollman/"
+folder_on_drive="CopernicusHome"
+
+# List all block devices
+devices=$(lsblk -o NAME,MOUNTPOINT -nr | grep -E 'sd[b-z]1')
+
+# Exit if devices is empty
+[[ -z "$devices" ]] && { echo "No external drives found." ; exit 1; }
+
+# Check if mounted
+is_mounted() {
+    grep -qs "$1" /proc/mounts
+}
+
+# Store unmounted devices
+unmounted_devices=()
+
+# Iterate over each devices
+while IFS= read -r line; do
+    device_name=$(echo "$line" | awk '{print $1}')
+    mount_point=$(echo "$line" | awk '{print $2}')
+
+    if ! is_mounted "$device_name"; then
+        # Device is not mounted
+        
+        echo "Unmounted external drive: $device_name"
+        unmounted_devices+=("$device_name")
+    
+    fi
+
+done <<< "$devices"
+
+# Let the user choose which device they want to backup to.
+
+# Check if there are any unmounted devices
+if [ ${#unmounted_devices[@]} -eq 0 ]; then
+    echo "No unmounted external hard drives found."
+    exit 0
+fi
+
+# Prompt the user to select a device
+echo "Available unmounted external hard drives:"
+select device in "${unmounted_devices[@]}"; do
+    if [ -n "$device" ]; then
+        echo "You selected: $device"
+        break
+    else
+        echo "Invalid selection. Please choose a valid option."
+        exit 0
+    fi
+done
+
+
+# Check if mount_directory exists, if not make it
+[[ ! -d $mount_directory ]] && sudo mkdir $mount_directory
+
+# Need to mount the drive to a predetermined location.
+sudo mount "/dev/$device" $mount_directory
+
+# If backup folder on drive doesn't exist, make it
+echo "$mount_directory/$folder_on_drive"
+[[ ! -d "$mount_directory/$folder_on_drive" ]] && sudo mkdir "$mount_directory/$folder_on_drive"
+
+# rsync with symlinks files to the directory.
+sudo rsync -av --delete $directory_to_backup $mound_directory/$folder_on_drive
+
+# unmount to set up for next script run
+sudo umount "/dev/$device"
+
+# unmount directory

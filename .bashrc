@@ -39,6 +39,7 @@ alias onlineBackup='read -s -p "Remote sudo password: " SUDOPASS && rsync -auP -
 
 # Virual Environments
 alias jupt_testing="source ~/Main/envs/jupt_testing/bin/activate"
+alias spade_testing="source ~/Main/envs/spade_testing/bin/activate"
 
 # Software
 alias hx="helix"
@@ -60,6 +61,9 @@ alias bnode="ssh dhollman@bnode.ap.dias.ie"
 
 # Environments
 alias cometPy="source /home/daraghhollman/Main/CometsThesis/Python/cometPy/bin/activate"
+
+# Other
+alias pylint="pylint --rcfile /home/daraghhollman/.config/pylintrc"
 
 ### FUNCTIONS ###
 # Open pdfs

@@ -1,0 +1,6 @@
+#!/bin/sh
+# A bemenu binary prompt script
+# Gives a bemenu prompt labelled with $1 to perform command $2
+
+[ $(echo -e "No\nYes" | bemenu -i -p "$1") \
+== "Yes" ] && $2
