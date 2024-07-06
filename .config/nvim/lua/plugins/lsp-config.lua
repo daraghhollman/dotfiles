@@ -13,7 +13,11 @@ return {
 			require("mason-lspconfig").setup({
 				ensure_installed = {
 					"lua_ls",
-					"pylsp",
+                    "bashls",
+					"ruff_lsp",
+					"pyright",
+                    "html",
+                    "cssls",
 				},
 			})
 		end,
@@ -29,16 +33,23 @@ return {
 			lspconfig.lua_ls.setup({
 				capabilties = capabilities,
 			})
-			lspconfig.pylsp.setup({
-				capabilities = capabilities,
-
+			lspconfig.bashls.setup({
+				capabilties = capabilities,
+			})
+			lspconfig.ruff_lsp.setup({
+				capabilties = capabilities,
+			})
+			lspconfig.html.setup({
+				capabilties = capabilities,
+			})
+			lspconfig.cssls.setup({
+				capabilties = capabilities,
+			})
+			lspconfig.pyright.setup({
 				settings = {
-					pylsp = {
-						plugins = {
-							pycodestyle = {
-								maxLineLength = 100,
-							},
-						},
+					pyright = {
+						-- Using everything else from ruff
+						disableOrganizeImports = true,
 					},
 				},
 			})

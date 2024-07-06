@@ -1,0 +1,25 @@
+#!/bin/sh
+
+# Function will move:
+#   *.md to notes/
+#   *.png to IMAGES/
+#   *.jpg to IMAGES/
+#   *.pdf to PDFS/
+
+# Check current directory
+TARGET_DIR="/home/daraghhollman/Main/Obsidian/Notes-Vault/"
+
+CURRENT_DIR=$(pwd)
+
+if [ "$CURRENT_DIR" != "$TARGET_DIR" ]; then
+    echo "Not in the base directory, cd'ing to $TARGET_DIR"
+    cd "$TARGET_DIR"
+fi
+
+
+# Move files
+mv -v *.md "$TARGET_DIR/Notes/"
+mv -v *.png "$TARGET_DIR/IMAGES/"
+mv -v *.jpg "$TARGET_DIR/IMAGES/"
+mv -v *.pdf "$TARGET_DIR/PDFS/"
+

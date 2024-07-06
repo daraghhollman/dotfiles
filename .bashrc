@@ -12,6 +12,13 @@ alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+# append to history instead of overwriting
+shopt -s histappend
+
+# set history length
+HISTSIZE=5000
+HISTFILESIZE=5000
+
 
 ### ALIASES ###
 # General
@@ -50,15 +57,10 @@ alias cal="cal -m"
 alias comets="cd /home/daraghhollman/Main/CometsThesis/; source ./Python/cometPy/bin/activate"
 alias thesis="cd /home/daraghhollman/Main/CometsThesis/Writing/Thesis; evince main.pdf & nvim ./main.tex"
 alias spade="cd /home/daraghhollman/Main/Projects/SPADE/; source /home/daraghhollman/Main/envs/spade_testing/bin/activate"
+alias website="cd /home/daraghhollman/Main/Projects/personal/daraghhollman.github.io/; nvim index.html"
 
 # Open Configs
 alias hyprconfig="nvim /home/daraghhollman/.config/hypr/hyprland.conf"
-
-# ssh
-alias kepler="ssh 192.168.0.73"
-alias ariadne="ssh dhollman@ariadne.dias.ie"
-alias mimir="ssh dhollman@mimir.ap.dias.ie"
-alias bnode="ssh dhollman@bnode.ap.dias.ie"
 
 # Other
 alias pylint="pylint --rcfile /home/daraghhollman/.config/pylintrc"
