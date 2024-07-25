@@ -18,6 +18,8 @@ return {
 					"pyright",
                     "html",
                     "cssls",
+                    "markdown_oxide",
+                    "texlab"
 				},
 			})
 		end,
@@ -33,6 +35,9 @@ return {
 			lspconfig.lua_ls.setup({
 				capabilties = capabilities,
 			})
+			lspconfig.texlab.setup({
+				capabilties = capabilities,
+			})
 			lspconfig.bashls.setup({
 				capabilties = capabilities,
 			})
@@ -43,6 +48,9 @@ return {
 				capabilties = capabilities,
 			})
 			lspconfig.cssls.setup({
+				capabilties = capabilities,
+			})
+			lspconfig.markdown_oxide.setup({
 				capabilties = capabilities,
 			})
 			lspconfig.pyright.setup({

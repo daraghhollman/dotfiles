@@ -1,0 +1,8 @@
+https://lukesmith.xyz/index.xml "blog" "~Luke Smith Website"
+
+# News
+https://www.rte.ie/feeds/rss/?index=/news/&limit=100 "news" "~RTE"
+
+# Youtube
+https://www.youtube.com/feeds/videos.xml?channel_id=UCFKDEp9si4RmHFWJW1vYsMA "youtube" 
+https://www.youtube.com/feeds/videos.xml?channel_id=UCtoaZpBnrd0lhycxYJ4MNOQ "youtube"

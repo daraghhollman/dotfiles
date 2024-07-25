@@ -1,0 +1,5 @@
+#!/bin/sh
+
+BINDS_PATH="/home/daraghhollman/.config/binds/"
+
+cat $BINDS_PATH$(ls $BINDS_PATH | fzf --preview "bat $BINDS_PATH{}")

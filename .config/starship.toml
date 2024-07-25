@@ -28,7 +28,7 @@ show_always = true
 
 [hostname]
 ssh_only = false
-format = '[ @ ](fg:bold cyan)[$hostname](fg:bold purple bg:#0e1419)'
+format = '[@](fg:bold cyan)[$hostname](fg:bold purple bg:#0e1419)'
 disabled = false
 
 [env_var]

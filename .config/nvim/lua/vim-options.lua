@@ -9,3 +9,11 @@ vim.g.mapleader = " "
 
 vim.opt.number = true
 vim.wo.relativenumber = true
+
+-- delete without yanking
+vim.cmd('nnoremap <leader>d "_d')
+vim.cmd('vnoremap <leader>d "_d')
+
+-- replace currently selected text with default register
+-- without yanking it
+vim.cmd('vnoremap <leader>p "_dP')

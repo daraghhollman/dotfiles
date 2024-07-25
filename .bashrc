@@ -8,17 +8,12 @@ __git_complete dotfiles __git_main
 
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 
+# Append to history
+shopt -s histappend
+
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
-
-# append to history instead of overwriting
-shopt -s histappend
-
-# set history length
-HISTSIZE=5000
-HISTFILESIZE=5000
-
 
 ### ALIASES ###
 # General
@@ -49,18 +44,15 @@ alias jupt_testing="source ~/Main/envs/jupt_testing/bin/activate"
 alias cometPy="source /home/daraghhollman/Main/CometsThesis/Python/cometPy/bin/activate"
 
 # Software
-alias hx="helix"
+alias fnv='nvim $(fzf --preview="bat --color=always {}")'
 alias aurora="cd /home/daraghhollman/Installations/Aurora4x/Aurora/; FONT_NAME="FreeSerif" FONT_SIZE=9 SCALEHACKX=1 SCALEHACKY=1 MONO_IOMAP=all mono Aurora.exe"
-alias cal="cal -m"
+alias hss='hugo server --noHTTPCache'
 
 # Navigation
 alias comets="cd /home/daraghhollman/Main/CometsThesis/; source ./Python/cometPy/bin/activate"
 alias thesis="cd /home/daraghhollman/Main/CometsThesis/Writing/Thesis; evince main.pdf & nvim ./main.tex"
 alias spade="cd /home/daraghhollman/Main/Projects/SPADE/; source /home/daraghhollman/Main/envs/spade_testing/bin/activate"
 alias website="cd /home/daraghhollman/Main/Projects/personal/daraghhollman.github.io/; nvim index.html"
-
-# Open Configs
-alias hyprconfig="nvim /home/daraghhollman/.config/hypr/hyprland.conf"
 
 # Other
 alias pylint="pylint --rcfile /home/daraghhollman/.config/pylintrc"
@@ -76,11 +68,12 @@ ReadPDF() {
 eval "$(starship init bash)"
 eval "$(thefuck --alias)"
 eval "$(zoxide init bash)"
+eval "$(fzf --bash)"
 
 
 ### PATH ###
-export PATH="/usr/local/texlive/2023/bin/x86_64-linux:$PATH"
 export PATH="$HOME/Main/scripts:$PATH"
+export PATH="/usr/local/texlive/2023/bin/x86_64-linux:$PATH"
 
 
 ### CLEANUP ###
@@ -97,6 +90,5 @@ alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
 alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
 alias mbsync='mbsync -c ~/.mbsyncrc'
 alias nvidia-settings='nvidia-settings --config="$XDG_CONFIG_HOME"/nvidia/settings'
-export HISTFILE="$XDG_STATE_HOME"/bash/history
 export VSCODE_PORTABLE="$XDG_DATA_HOME"/vscode
 export GOPATH="$XDG_DATA_HOME"/go
